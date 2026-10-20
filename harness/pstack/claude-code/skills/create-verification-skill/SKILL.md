@@ -6,8 +6,6 @@ disable-model-invocation: true
 
 # Create a verification skill
 
-In Claude Code, read [the Claude Code adapter](../../docs/harness/claude-code.md) once per session before you follow this skill. It maps the Cursor names in pstack skills to Claude Code.
-
 Every serious project needs a scripted way to drive the real app and prove behavior: launch it, exercise a feature the way a user would, and capture evidence. This skill generates that as a project-local skill (`.agent/skills/verify-<app>/`) tailored to the repo. You write the generator's output for the next agent, not for a human: it will be read cold, mid-task, by an agent that has never seen the app.
 
 ## 1. Interview the repo, not the user
@@ -28,7 +26,6 @@ Keep one canonical copy under `.agent/skills/verify-<app>/`. Register the same d
 
 - `.claude/skills/verify-<app>` → `../../.agent/skills/verify-<app>` for Claude Code.
 - `.agents/skills/verify-<app>` → `../../.agent/skills/verify-<app>` for Codex discovery; singular `.agent` alone is not a Codex discovery directory.
-- `.cursor/skills/verify-<app>` → `../../.agent/skills/verify-<app>` for Cursor.
 
 Create missing parent directories. When migrating an existing generated skill, move its whole directory, including helpers and the feature map, into the canonical location before adding aliases. Inspect occupied destinations; do not overwrite unrelated files or divergent skill copies. Resolve aliases before counting skills so the same target is not mistaken for several candidates. Document canonical paths in generated commands and resolve helper-relative paths from the real file location so invoking through an alias behaves identically.
 
@@ -51,4 +48,4 @@ Confirm every alias resolves to the canonical `SKILL.md`, helper scripts remain 
 
 ## 5. Offer the maintenance loop
 
-Point the user at `/maintain-verification-skill` for keeping the map honest as the app changes. Suggest a cadence only if they ask.
+Point the user at [`/maintain-verification-skill`](../maintain-verification-skill/SKILL.md) for keeping the map honest as the app changes. Suggest a cadence only if they ask.

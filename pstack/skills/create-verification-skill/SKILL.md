@@ -26,7 +26,6 @@ Keep one canonical copy under `.agent/skills/verify-<app>/`. Register the same d
 
 - `.claude/skills/verify-<app>` → `../../.agent/skills/verify-<app>` for Claude Code.
 - `.agents/skills/verify-<app>` → `../../.agent/skills/verify-<app>` for Codex discovery; singular `.agent` alone is not a Codex discovery directory.
-- `.cursor/skills/verify-<app>` → `../../.agent/skills/verify-<app>` for Cursor.
 
 Create missing parent directories. When migrating an existing generated skill, move its whole directory, including helpers and the feature map, into the canonical location before adding aliases. Inspect occupied destinations; do not overwrite unrelated files or divergent skill copies. Resolve aliases before counting skills so the same target is not mistaken for several candidates. Document canonical paths in generated commands and resolve helper-relative paths from the real file location so invoking through an alias behaves identically.
 
@@ -49,4 +48,4 @@ Confirm every alias resolves to the canonical `SKILL.md`, helper scripts remain 
 
 ## 5. Offer the maintenance loop
 
-Point the user at `/maintain-verification-skill` for keeping the map honest as the app changes. Suggest a cadence only if they ask.
+Point the user at [`/maintain-verification-skill`](../maintain-verification-skill/SKILL.md) for keeping the map honest as the app changes. Suggest a cadence only if they ask.
